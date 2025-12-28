@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=1" />
+  <meta name="theme-color" content="#07080a" />
+  <title>Tribunal des Copains — Noël des copains 2025</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="crt">
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="badge">NOËL DES COPAINS 2025</div>
+      <div class="sigil" aria-hidden="true">
+        <div class="scale">
+          <span class="arm left"></span>
+          <span class="arm right"></span>
+          <span class="pan left"></span>
+          <span class="pan right"></span>
+          <span class="stem"></span>
+          <span class="base"></span>
+        </div>
+      </div>
+    </header>
+
+    <main class="shell">
+
+      <!-- ÉCRAN ACCUEIL -->
+      <section class="card" id="screen-home">
+        <div class="card-header">
+          <div class="title">⚖️ TRIBUNAL DES COPAINS</div>
+        </div>
+
+        <div class="warning">
+          <div class="warning-title">MESSAGE DU CRÉATEUR</div>
+          <p>
+            Ce jeu a été créé par une personne des plus exceptionnelles qui puissent exister.
+            <strong>Sylvain</strong> vous souhaite une très belle partie !
+          </p>
+          <p class="small mono">
+            Profitez. Jugez. Accusez. Mais assumez.
+          </p>
+        </div>
+
+        <div class="form">
+          <label class="label" for="players">
+            Liste des copains (un par ligne) — tu peux coller 20+ prénoms
+          </label>
+          <textarea id="players" rows="8" spellcheck="false" class="textarea"
+            placeholder="Ex:
+Sylvain
+Mathilde
+Kevin
+..."></textarea>
+
+          <label class="label" for="judgePass">
+            Mot de passe du Juge (le seul à pouvoir Verdict / Passer / Menu)
+          </label>
+          <input id="judgePass" class="textarea input" type="password" placeholder="Ex: JUGE2025" />
+
+          <div class="row">
+            <label class="check">
+              <input type="checkbox" id="shufflePlayers" checked />
+              <span>Mélanger l’ordre des prénoms</span>
+            </label>
+          </div>
+
+          <div class="row">
+            <label class="check">
+              <input type="checkbox" id="hardMode" checked />
+              <span>Mode <strong>ULTRA TRASH</strong></span>
+            </label>
+          </div>
+
+          <button class="btn primary" id="btnStart">Désigner le juge & ouvrir l’audience</button>
+
+          <p class="small mono hint">
+            Conseil : le juge garde le tel pour les actions protégées, mais peut le passer pour les votes.
+          </p>
+        </div>
+      </section>
+
+      <!-- ÉCRAN JEU -->
+      <section class="card hidden" id="screen-game">
+        <div class="card-header">
+          <div class="title">Audience en cours</div>
+          <div class="subtitle mono" id="roundInfo">Dossier #000 — Préparation…</div>
+        </div>
+
+        <div class="dossier">
+          <div class="dossier-top">
+            <span class="stamp" id="stamp">ENQUÊTE</span>
+            <span class="tag mono" id="categoryTag">CAT: ???</span>
+          </div>
+
+          <div class="charge" id="questionText">
+            Chargement de l’acte d’accusation…
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="vote">
+            <div class="vote-title mono">Désigne l’accusé principal :</div>
+            <div class="grid" id="choices"></div>
+          </div>
+
+          <div class="row footer-actions">
+            <button class="btn" id="btnMenuGame">Retour menu (juge)</button>
+            <button class="btn" id="btnSkip">Passer (juge)</button>
+            <button class="btn" id="btnVote" disabled>Valider le vote</button>
+            <button class="btn primary" id="btnVerdict">Rendre le verdict (juge)</button>
+          </div>
+
+          <p class="small mono hint" id="voteHint">
+            Votes : <span id="voteCount">0</span> / <span id="voteTarget">0</span>
+            — Clique “Valider le vote”. Quand le quota est atteint, le vote se bloque.
+          </p>
+        </div>
+      </section>
+
+      <!-- ÉCRAN VERDICT -->
+      <section class="card hidden" id="screen-verdict">
+        <div class="card-header">
+          <div class="title">VERDICT</div>
+          <div class="subtitle mono" id="verdictSub">Le Tribunal a tranché.</div>
+        </div>
+
+        <div class="verdict">
+          <div class="verdict-stamp" id="verdictStamp">COUPABLE</div>
+
+          <ol class="podium" id="podium"></ol>
+
+          <div class="sentence">
+            <div class="sentence-title mono">PEINE</div>
+            <div class="sentence-text" id="sentenceText">—</div>
+          </div>
+
+          <div class="row footer-actions">
+            <button class="btn" id="btnMenuVerdict">Retour menu (juge)</button>
+            <button class="btn" id="btnBack">Retour au dossier</button>
+            <button class="btn primary" id="btnNext">Dossier suivant (juge)</button>
+          </div>
+
+          <p class="small mono hint">
+            Si ça chauffe : “c’est le Tribunal, pas la vraie vie” 😈
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="bottombar">
+      <div class="mono small">© Tribunal des Copains — Édition Noël des copains 2025</div>
+      <div class="mono small">Mode : <span id="modeLabel">ULTRA TRASH</span></div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
